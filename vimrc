@@ -39,6 +39,20 @@ let g:syntastic_rust_checkers = ['rustc']
 
 let g:rustfmt_autosave = 1
 
+set timeoutlen=1000 ttimeoutlen=0
+
+" <TAB> Settings
+set tabstop=4
+set softtabstop=4
+set expandtab
+
+" UI config
+syntax on
+colorscheme thaumaturge
+set number
+set cursorline
+
+
 inoremap jk <Esc>
 inoremap jj <Esc>
 nnoremap <C-_> ^i#<Esc>
