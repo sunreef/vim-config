@@ -11,6 +11,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'rust-lang/rust.vim'
+Plugin 'tell-k/vim-autopep8'
+Plugin 'sjl/gundo.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -39,6 +41,9 @@ let g:syntastic_rust_checkers = ['rustc']
 
 let g:rustfmt_autosave = 1
 
+let g:autopep8_max_line_length=100
+let g:autopep8_disable_show_diff=1
+
 set timeoutlen=1000 ttimeoutlen=0
 
 " <TAB> Settings
@@ -51,7 +56,23 @@ syntax on
 colorscheme thaumaturge
 set number
 set cursorline
+set lazyredraw
+set showmatch
 
+" Search options
+set incsearch
+set hlsearch
+
+" Folding options
+set foldenable
+set foldlevelstart=10
+set foldnestmax=10
+nnoremap <space> za
+set foldmethod=syntax
+
+" Movement remapping
+nnoremap j gj
+nnoremap k gk
 
 inoremap jk <Esc>
 inoremap jj <Esc>
