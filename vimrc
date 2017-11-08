@@ -9,6 +9,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'rust-lang/rust.vim'
 Plugin 'tell-k/vim-autopep8'
@@ -72,6 +73,7 @@ set foldlevelstart=10
 set foldnestmax=10
 nnoremap <space> za
 autocmd FileType c++ set foldmethod=syntax
+autocmd FileType rust set foldmethod=syntax
 autocmd FileType python set foldmethod=indent
 
 " Movement remapping
