@@ -13,6 +13,7 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'rust-lang/rust.vim'
 Plugin 'tell-k/vim-autopep8'
 Plugin 'sjl/gundo.vim'
+Plugin 'scrooloose/nerdcommenter'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -29,22 +30,24 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+" Syntastic options
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_enable_signs=0
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_rust_checkers = ['rustc']
 
+" Rust options
 let g:rustfmt_autosave = 1
 
+" Python options
 let g:autopep8_max_line_length=100
 let g:autopep8_disable_show_diff=1
-
-set timeoutlen=1000 ttimeoutlen=0
 
 " <TAB> Settings
 set tabstop=4
@@ -68,7 +71,8 @@ set foldenable
 set foldlevelstart=10
 set foldnestmax=10
 nnoremap <space> za
-set foldmethod=syntax
+autocmd FileType c++ set foldmethod=syntax
+autocmd FileType python set foldmethod=indent
 
 " Movement remapping
 nnoremap j gj
@@ -81,7 +85,7 @@ inoremap jk <Esc>
 inoremap jj <Esc>
 nnoremap <C-_> ^i#<Esc>
 
-" allows cursor change in tmux mode
+" Allows cursor change in tmux mode
 if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
     let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
@@ -89,3 +93,12 @@ else
     let &t_SI = "\e[5 q"
     let &t_EI = "\e[2 q"
 endif
+
+" File tabs handling
+nnoremap <C-t>k :tabr<cr>  
+nnoremap <C-t>j :tabl<cr>
+nnoremap <C-t>h :tabp<cr>
+nnoremap <C-t>l :tabn<cr>
+
+" Miscellenaous options
+set timeoutlen=1000 ttimeoutlen=0
