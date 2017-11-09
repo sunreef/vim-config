@@ -16,6 +16,7 @@ Plugin 'tell-k/vim-autopep8'
 Plugin 'sjl/gundo.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'kh3phr3n/python-syntax'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -50,9 +51,6 @@ let g:rustfmt_autosave = 1
 " Python options
 let g:autopep8_max_line_length=100
 let g:autopep8_disable_show_diff=1
-augroup PythonCustomization
-   autocmd FileType python syn match pythonStatement "\(\W\|^\)\@<=self\([\.,)]\)\@="
-augroup END
 
 " <TAB> Settings
 set tabstop=4
