@@ -62,6 +62,7 @@ set number
 set cursorline
 set lazyredraw
 set showmatch
+set laststatus=0
 
 " Search options
 set incsearch
@@ -82,7 +83,10 @@ nnoremap k gk
 
 "Utility remap
 let mapleader=","
-nnoremap <leader>u :GundoToggle<CR>
+nnoremap <leader>u :GundoToggle<cr>
+if has('python3')
+    let g:gundo_prefer_python3 = 1
+endif
 inoremap jk <Esc>
 inoremap jj <Esc>
 nnoremap <C-_> ^i#<Esc>
