@@ -15,6 +15,7 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'tell-k/vim-autopep8'
 Plugin 'sjl/gundo.vim'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'flazz/vim-colorschemes'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -49,6 +50,9 @@ let g:rustfmt_autosave = 1
 " Python options
 let g:autopep8_max_line_length=100
 let g:autopep8_disable_show_diff=1
+augroup PythonCustomization
+   autocmd FileType python syn match pythonStatement "\(\W\|^\)\@<=self\([\.,)]\)\@="
+augroup END
 
 " <TAB> Settings
 set tabstop=4
@@ -57,12 +61,16 @@ set expandtab
 
 " UI config
 syntax on
-colorscheme thaumaturge
+colorscheme distinguished
 set number
 set cursorline
 set lazyredraw
 set showmatch
 set laststatus=0
+
+" ScrollColor shortcuts
+nnoremap [D :PREVCOLOR<cr>
+nnoremap [C :NEXTCOLOR<cr>
 
 " Search options
 set incsearch
