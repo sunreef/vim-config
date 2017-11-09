@@ -97,10 +97,16 @@ else
 endif
 
 " File tabs handling
-nnoremap <C-t>k :tabr<cr>  
-nnoremap <C-t>j :tabl<cr>
-nnoremap <C-t>h :tabp<cr>
-nnoremap <C-t>l :tabn<cr>
+if exists('$TMUX')
+    nnoremap  :tabr<cr>
+    nnoremap  :tabl<cr>
+else
+    nnoremap <C-k> :tabr<cr>
+    nnoremap <C-j> :tabl<cr>
+endif
+
+nnoremap  :tabp<cr>
+nnoremap  :tabn<cr>
 
 " Miscellenaous options
 set timeoutlen=1000 ttimeoutlen=0
