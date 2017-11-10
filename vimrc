@@ -17,6 +17,7 @@ Plugin 'sjl/gundo.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'kh3phr3n/python-syntax'
+Plugin 'racer-rust/vim-racer'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -43,7 +44,7 @@ let g:syntastic_enable_signs=0
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
-let g:syntastic_rust_checkers = ['rustc']
+"let g:syntastic_rust_checkers = ['rustc']
 
 " Rust options
 let g:rustfmt_autosave = 1
