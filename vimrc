@@ -108,6 +108,7 @@ else
 endif
 
 " File tabs handling
+set tabpagemax=100
 if exists('$TMUX')
     nnoremap  :tabr<cr>
     nnoremap  :tabl<cr>
@@ -115,7 +116,6 @@ else
     nnoremap <C-k> :tabr<cr>
     nnoremap <C-j> :tabl<cr>
 endif
-
 nnoremap  :tabp<cr>
 nnoremap  :tabn<cr>
 
