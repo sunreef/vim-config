@@ -112,12 +112,14 @@ set tabpagemax=100
 if exists('$TMUX')
     nnoremap  :tabr<cr>
     nnoremap  :tabl<cr>
+    nnoremap  :tabp<cr>
+    nnoremap  :tabn<cr>
 else
     nnoremap <C-k> :tabr<cr>
     nnoremap <C-j> :tabl<cr>
+    nnoremap  :tabp<cr>
+    nnoremap  :tabn<cr>
 endif
-nnoremap  :tabp<cr>
-nnoremap  :tabn<cr>
 
 " Miscellenaous options
 set timeoutlen=1000 ttimeoutlen=0
