@@ -18,6 +18,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'kh3phr3n/python-syntax'
 Plugin 'racer-rust/vim-racer'
+Plugin 'tmux-plugins/vim-tmux'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
