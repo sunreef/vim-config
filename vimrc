@@ -104,7 +104,6 @@ if has('python3')
 endif
 inoremap jk <Esc>
 inoremap jj <Esc>
-nnoremap <C-_> ^i#<Esc>
 
 " Allows cursor change in tmux mode
 if exists('$TMUX')
