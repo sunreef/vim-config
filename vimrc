@@ -49,6 +49,13 @@ let g:syntastic_check_on_wq = 0
 
 " Rust options
 let g:rustfmt_autosave = 1
+let g:racer_cmd = "~/.cargo/bin/racer"
+let g:racer_experimental_completer = 1
+
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
 " Python options
 let g:autopep8_max_line_length=100
@@ -61,7 +68,7 @@ set expandtab
 
 " UI config
 syntax on
-colorscheme distinguished
+colorscheme eva01
 set number
 set cursorline
 set lazyredraw
@@ -118,9 +125,16 @@ if exists('$TMUX')
 else
     nnoremap <C-k> :tabr<cr>
     nnoremap <C-j> :tabl<cr>
-    nnoremap  :tabp<cr>
-    nnoremap  :tabn<cr>
+    nnoremap <C-h> :tabp<cr>
+    nnoremap <C-l> :tabn<cr>
 endif
 
 " Miscellenaous options
 set timeoutlen=1000 ttimeoutlen=0
+
+augroup python
+        autocmd!
+        autocmd FileType python
+                                \   syn keyword pythonBuiltin self
+                                "\ | highlight def link pythonBuiltin Special
+augroup end
