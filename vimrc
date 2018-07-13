@@ -10,7 +10,8 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'vim-syntastic/syntastic'
+"Plugin 'vim-syntastic/syntastic'
+Plugin 'w0rp/ale'
 Plugin 'rust-lang/rust.vim'
 Plugin 'tell-k/vim-autopep8'
 Plugin 'sjl/gundo.vim'
@@ -35,22 +36,13 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-" Syntastic options
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_enable_signs=0
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-"let g:syntastic_rust_checkers = ['rustc']
+"ALE settings
+let g:ale_linters = {'rust': ['rls']}
 
 " Rust options
-let g:rustfmt_autosave = 1
-let g:racer_cmd = "~/.cargo/bin/racer"
-let g:racer_experimental_completer = 1
+"let g:rustfmt_autosave = 1
+"let g:racer_cmd = "~/.cargo/bin/racer"
+"let g:racer_experimental_completer = 1
 
 au FileType rust nmap gd <Plug>(rust-def)
 au FileType rust nmap gs <Plug>(rust-def-split)
@@ -68,12 +60,14 @@ set expandtab
 
 " UI config
 syntax on
-colorscheme eva01
+"colorscheme eva01
+colorscheme gotham256
 set number
-set cursorline
+"set cursorline
 set lazyredraw
 set showmatch
 set laststatus=0
+
 
 " ScrollColor shortcuts
 nnoremap [D :PREVCOLOR<cr>
