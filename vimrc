@@ -61,7 +61,7 @@ set expandtab
 " UI config
 syntax on
 "colorscheme eva01
-colorscheme gotham256
+colorscheme custom_gotham256
 set number
 "set cursorline
 set lazyredraw
