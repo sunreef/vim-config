@@ -9,9 +9,9 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 "Plugin 'vim-syntastic/syntastic'
-Plugin 'w0rp/ale'
+"Plugin 'w0rp/ale'
 Plugin 'rust-lang/rust.vim'
 Plugin 'tell-k/vim-autopep8'
 Plugin 'sjl/gundo.vim'
@@ -20,12 +20,17 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'kh3phr3n/python-syntax'
 Plugin 'racer-rust/vim-racer'
 Plugin 'tmux-plugins/vim-tmux'
+Plugin 'davidhalter/jedi-vim'
+
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'vim-airline/vim-airline'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
-"filetype plugin on
+filetype plugin on
 "
 " Brief help
 " :PluginList       - lists configured plugins
@@ -35,13 +40,26 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+"
+
+
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:Tex_DefaultTargetFormat='pdf'
+let g:Tex_MultipleCompileFormats='pdf, aux'
+
+"Jedi-vim settings
+let g:jedi#use_splits_not_buffers = "right"
+autocmd FileType python setlocal completeopt-=preview
 
 "ALE settings
-let g:ale_linters = {'rust': ['rls']}
+"let g:ale_linters = {'rust': ['rls']}
 
 " Rust options
-"let g:rustfmt_autosave = 1
-"let g:racer_cmd = "~/.cargo/bin/racer"
+let g:rustfmt_autosave = 1
+let g:racer_cmd = "~/.cargo/bin/racer"
+let g:rustc_path = "~/.cargo/bin/rustc"
 "let g:racer_experimental_completer = 1
 
 au FileType rust nmap gd <Plug>(rust-def)
@@ -66,12 +84,12 @@ set number
 "set cursorline
 set lazyredraw
 set showmatch
-set laststatus=0
+set laststatus=2
 
 
 " ScrollColor shortcuts
-nnoremap [D :PREVCOLOR<cr>
-nnoremap [C :NEXTCOLOR<cr>
+nnoremap [1;6D :PREVCOLOR<cr>
+nnoremap [1;6C :NEXTCOLOR<cr>
 
 " Search options
 set incsearch
@@ -110,17 +128,17 @@ endif
 
 " File tabs handling
 set tabpagemax=100
-if exists('$TMUX')
-    nnoremap  :tabr<cr>
-    nnoremap  :tabl<cr>
-    nnoremap  :tabp<cr>
-    nnoremap  :tabn<cr>
-else
-    nnoremap <C-k> :tabr<cr>
-    nnoremap <C-j> :tabl<cr>
-    nnoremap <C-h> :tabp<cr>
-    nnoremap <C-l> :tabn<cr>
-endif
+
+" Window splits navigation
+nnoremap [1;5C <C-w>l
+nnoremap [1;5D <C-w>h
+nnoremap [1;5A <C-w>k
+nnoremap [1;5B <C-w>j
+
+nnoremap <C-t> :BuffergatorMruCycleNext<cr>
+nnoremap <C-y> :BuffergatorMruCyclePrev<cr>
+nnoremap <C-h> :bprevious<cr>
+nnoremap <C-l> :bnext<cr>
 
 " Miscellenaous options
 set timeoutlen=1000 ttimeoutlen=0
@@ -131,3 +149,57 @@ augroup python
                                 \   syn keyword pythonBuiltin self
                                 "\ | highlight def link pythonBuiltin Special
 augroup end
+
+" CtrlP settings
+"
+" Setup some default ignores
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
+  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+\}
+
+" Use the nearest .git directory as the cwd
+" This makes a lot of sense if you are working on a project that is in version
+" control. It also supports works with .svn, .hg, .bzr.
+let g:ctrlp_working_path_mode = 'r'
+
+" Use a leader instead of the actual named binding
+nmap <leader>p :CtrlP<cr>
+
+" Easy bindings for its various modes
+nmap <leader>bb :CtrlPBuffer<cr>
+nmap <leader>bm :CtrlPMixed<cr>
+nmap <leader>bs :CtrlPMRU<cr>
+
+
+
+
+
+" Buffergator settings
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+" Use the right side of the screen
+let g:buffergator_viewport_split_policy = 'R'
+
+" I want my own keymappings...
+let g:buffergator_suppress_keymaps = 1
+
+" Looper buffers
+"let g:buffergator_mru_cycle_loop = 1
+
+ "Go to the previous buffer open
+"nmap <leader>jj :BuffergatorMruCyclePrev<cr>
+
+ "Go to the next buffer open
+"nmap <leader>kk :BuffergatorMruCycleNext<cr>
+
+" View the entire list of buffers open
+nmap <leader>bl :BuffergatorOpen<cr>
+
+" Shared bindings from Solution #1 from earlier
+nmap <leader>T :enew<cr>
+nmap <leader>bq :bp <BAR> bd #<cr>
