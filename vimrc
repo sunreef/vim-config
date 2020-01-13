@@ -28,7 +28,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-obsession'
 Plugin 'dhruvasagar/vim-prosession'
 Plugin 'gikmx/ctrlp-obsession'
-
+Plugin 'preservim/nerdtree'
 Plugin 'derekwyatt/vim-fswitch'
 
 " All of your Plugins must be added before the following line
@@ -214,3 +214,6 @@ nmap <leader>bq :bp <BAR> bd #<cr>
 
 " FSwitch shortcut
 nnoremap <leader>fs :FSHere<cr>
+
+" NerdTree settings
+nnoremap <C-n> :NERDTreeToggle<CR>
