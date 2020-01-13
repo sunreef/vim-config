@@ -74,6 +74,7 @@ let g:autopep8_disable_show_diff=1
 " <TAB> Settings
 set tabstop=4
 set softtabstop=4
+set shiftwidth=4
 set expandtab
 
 " UI config
