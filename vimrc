@@ -30,6 +30,8 @@ Plugin 'dhruvasagar/vim-prosession'
 Plugin 'gikmx/ctrlp-obsession'
 Plugin 'preservim/nerdtree'
 Plugin 'derekwyatt/vim-fswitch'
+Plugin 'qpkorr/vim-bufkill'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
