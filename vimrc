@@ -183,8 +183,6 @@ nmap <leader>bs :CtrlPMRU<cr>
 
 
 
-
-
 " Buffergator settings
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
@@ -219,3 +217,4 @@ nnoremap <leader>fs :FSHere<cr>
 
 " NerdTree settings
 nnoremap <C-n> :NERDTreeToggle<CR>
+let g:NERDTreeWinSize=20
