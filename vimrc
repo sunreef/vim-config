@@ -32,6 +32,11 @@ Plugin 'preservim/nerdtree'
 Plugin 'derekwyatt/vim-fswitch'
 Plugin 'qpkorr/vim-bufkill'
 
+Plugin 'pangloss/vim-javascript'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'rhysd/vim-clang-format'
+Plugin 'pseewald/anyfold'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -62,6 +67,10 @@ autocmd FileType python setlocal completeopt-=preview
 
 "ALE settings
 "let g:ale_linters = {'rust': ['rls']}
+"
+
+" C++ options
+let g:clang_format#auto_format = 1
 
 " Rust options
 let g:rustfmt_autosave = 1
@@ -111,10 +120,13 @@ nnoremap <space> za
 autocmd FileType c++ set foldmethod=syntax
 autocmd FileType rust set foldmethod=syntax
 autocmd FileType python set foldmethod=indent
+autocmd FileType * AnyFoldActivate
 
 " Movement remapping
 nnoremap j gj
 nnoremap k gk
+vnoremap j gj
+vnoremap k gk
 
 "Utility remap
 let mapleader=","
@@ -123,7 +135,6 @@ if has('python3')
     let g:gundo_prefer_python3 = 1
 endif
 inoremap jk <Esc>
-inoremap jj <Esc>
 
 " Allows cursor change in tmux mode
 if exists('$TMUX')
