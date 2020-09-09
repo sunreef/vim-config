@@ -21,9 +21,11 @@ Plugin 'kh3phr3n/python-syntax'
 Plugin 'racer-rust/vim-racer'
 Plugin 'tmux-plugins/vim-tmux'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'tpope/vim-eunuch'
 
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'yegappan/taglist'
 Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-obsession'
 Plugin 'dhruvasagar/vim-prosession'
@@ -36,7 +38,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'pseewald/anyfold'
-
+Plugin 'luochen1990/rainbow'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -67,7 +69,6 @@ autocmd FileType python setlocal completeopt-=preview
 
 "ALE settings
 "let g:ale_linters = {'rust': ['rls']}
-"
 
 " C++ options
 let g:clang_format#auto_format = 1
@@ -84,8 +85,15 @@ au FileType rust nmap gx <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
 " Python options
-let g:autopep8_max_line_length=100
-let g:autopep8_disable_show_diff=1
+let g:autopep8_max_line_length = 100
+let g:autopep8_disable_show_diff = 1
+
+" Rainbow option
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+\	'ctermfgs': ['Blue', 'Red', 'Yellow', 'Magenta'],
+\ }
 
 " <TAB> Settings
 set tabstop=4
@@ -95,10 +103,8 @@ set expandtab
 
 " UI config
 syntax on
-"colorscheme eva01
 colorscheme custom_gotham256
 set number
-"set cursorline
 set lazyredraw
 set showmatch
 set laststatus=2
@@ -159,6 +165,9 @@ nnoremap <C-y> :BuffergatorMruCyclePrev<cr>
 nnoremap <C-h> :bprevious<cr>
 nnoremap <C-l> :bnext<cr>
 
+" Taglist command
+nnoremap <leader>t :TlistToggle<cr>
+
 " Miscellenaous options
 set timeoutlen=1000 ttimeoutlen=0
 
@@ -174,9 +183,8 @@ augroup end
 " Setup some default ignores
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
-  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+  \ 'file': '\v\.(log|pdf|aux|blg|bbl|bcf|lbl|exe|so|dll|class|png|jpg|jpeg)$',
 \}
-
 nnoremap <Leader>ss :CtrlPObsession<CR>
 
 " Use the nearest .git directory as the cwd
