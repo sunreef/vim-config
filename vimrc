@@ -38,7 +38,6 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'pseewald/anyfold'
-Plugin 'luochen1990/rainbow'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -89,11 +88,11 @@ let g:autopep8_max_line_length = 100
 let g:autopep8_disable_show_diff = 1
 
 " Rainbow option
-let g:rainbow_active = 1
-let g:rainbow_conf = {
-\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
-\	'ctermfgs': ['Blue', 'Red', 'Yellow', 'Magenta'],
-\ }
+"let g:rainbow_active = 1
+"let g:rainbow_conf = {
+"\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+"\	'ctermfgs': ['Blue', 'Red', 'Yellow', 'Magenta'],
+"\ }
 
 " <TAB> Settings
 set tabstop=4
@@ -103,7 +102,7 @@ set expandtab
 
 " UI config
 syntax on
-colorscheme custom_gotham256
+colorscheme custom-colorsbox
 set number
 set lazyredraw
 set showmatch
