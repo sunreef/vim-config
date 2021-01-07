@@ -87,13 +87,6 @@ au FileType rust nmap <leader>gd <Plug>(rust-doc)
 let g:autopep8_max_line_length = 100
 let g:autopep8_disable_show_diff = 1
 
-" Rainbow option
-"let g:rainbow_active = 1
-"let g:rainbow_conf = {
-"\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
-"\	'ctermfgs': ['Blue', 'Red', 'Yellow', 'Magenta'],
-"\ }
-
 " <TAB> Settings
 set tabstop=4
 set softtabstop=4
