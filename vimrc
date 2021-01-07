@@ -157,6 +157,10 @@ nnoremap <C-y> :BuffergatorMruCyclePrev<cr>
 nnoremap <C-h> :bprevious<cr>
 nnoremap <C-l> :bnext<cr>
 
+" End and beginning of line mapping
+nnoremap B ^
+nnoremap W $
+
 " Taglist command
 nnoremap <leader>t :TlistToggle<cr>
 
