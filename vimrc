@@ -160,6 +160,8 @@ nnoremap <C-l> :bnext<cr>
 " End and beginning of line mapping
 nnoremap B ^
 nnoremap W $
+vnoremap B ^
+vnoremap W $
 
 " Taglist command
 nnoremap <leader>t :TlistToggle<cr>
@@ -196,8 +198,6 @@ nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMixed<cr>
 nmap <leader>bs :CtrlPMRU<cr>
 
-
-
 " Buffergator settings
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
@@ -210,15 +210,6 @@ let g:buffergator_viewport_split_policy = 'R'
 
 " I want my own keymappings...
 let g:buffergator_suppress_keymaps = 1
-
-" Looper buffers
-"let g:buffergator_mru_cycle_loop = 1
-
- "Go to the previous buffer open
-"nmap <leader>jj :BuffergatorMruCyclePrev<cr>
-
- "Go to the next buffer open
-"nmap <leader>kk :BuffergatorMruCycleNext<cr>
 
 " View the entire list of buffers open
 nmap <leader>bl :BuffergatorOpen<cr>
