@@ -1,60 +1,54 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+call plug#begin()
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 "Plugin 'vim-syntastic/syntastic'
 "Plugin 'w0rp/ale'
-Plugin 'rust-lang/rust.vim'
-Plugin 'tell-k/vim-autopep8'
-Plugin 'sjl/gundo.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'kh3phr3n/python-syntax'
-Plugin 'racer-rust/vim-racer'
-Plugin 'tmux-plugins/vim-tmux'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'tpope/vim-eunuch'
+Plug 'rust-lang/rust.vim'
+Plug 'tell-k/vim-autopep8'
+Plug 'sjl/gundo.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'flazz/vim-colorschemes'
+Plug 'kh3phr3n/python-syntax'
+Plug 'racer-rust/vim-racer'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'davidhalter/jedi-vim'
+Plug 'tpope/vim-eunuch'
 
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'jeetsukumaran/vim-buffergator'
-Plugin 'yegappan/taglist'
-Plugin 'vim-airline/vim-airline'
-Plugin 'tpope/vim-obsession'
-Plugin 'dhruvasagar/vim-prosession'
-Plugin 'gikmx/ctrlp-obsession'
-Plugin 'preservim/nerdtree'
-Plugin 'derekwyatt/vim-fswitch'
-Plugin 'qpkorr/vim-bufkill'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plugin 'pangloss/vim-javascript'
-Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'rhysd/vim-clang-format'
-Plugin 'pseewald/anyfold'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'yegappan/taglist'
+Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-obsession'
+Plug 'dhruvasagar/vim-prosession'
+Plug 'gikmx/ctrlp-obsession'
+Plug 'preservim/nerdtree'
+Plug 'derekwyatt/vim-fswitch'
+Plug 'qpkorr/vim-bufkill'
+
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'rhysd/vim-clang-format'
+Plug 'pseewald/anyfold'
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+call plug#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 filetype plugin on
 "
 " Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+" :PlugList       - lists configured plugins
+" :PlugInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PlugSearch foo - searches for foo; append `!` to refresh local cache
+" :PlugClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-"
-
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
@@ -103,8 +97,8 @@ set laststatus=2
 
 
 " ScrollColor shortcuts
-nnoremap [1;6D :PREVCOLOR<cr>
-nnoremap [1;6C :NEXTCOLOR<cr>
+nnoremap OD :PREVCOLOR<cr>
+nnoremap OC :NEXTCOLOR<cr>
 
 " Search options
 set incsearch
@@ -180,7 +174,7 @@ augroup end
 "
 " Setup some default ignores
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site|target)$',
   \ 'file': '\v\.(log|pdf|aux|blg|bbl|bcf|lbl|exe|so|dll|class|png|jpg|jpeg)$',
 \}
 nnoremap <Leader>ss :CtrlPObsession<CR>
@@ -189,6 +183,7 @@ nnoremap <Leader>ss :CtrlPObsession<CR>
 " This makes a lot of sense if you are working on a project that is in version
 " control. It also supports works with .svn, .hg, .bzr.
 let g:ctrlp_working_path_mode = 'r'
+let g:ctrlp_match_current_file = 1
 
 " Use a leader instead of the actual named binding
 nmap <leader>p :CtrlP<cr>
